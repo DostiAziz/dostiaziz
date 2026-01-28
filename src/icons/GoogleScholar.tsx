@@ -1,4 +1,5 @@
-// File: src/icons/GoogleScholar.tsx
+// TypeScript
+// File: `src/icons/GoogleScholar.tsx`
 import React from 'react';
 
 export interface GoogleScholarProps extends React.SVGProps<SVGSVGElement> {
@@ -17,7 +18,7 @@ export interface GoogleScholarProps extends React.SVGProps<SVGSVGElement> {
 const GoogleScholarIcon: React.FC<GoogleScholarProps> = ({
   size,
   color = 'currentColor',
-  strokeWidth = 2,
+  strokeWidth = 0,
   background = 'transparent',
   opacity = 1,
   rotation = 0,
@@ -60,10 +61,3 @@ const GoogleScholarIcon: React.FC<GoogleScholarProps> = ({
 };
 
 export default GoogleScholarIcon;
-
-
-// File: src/sections/Contact.tsx (partial — add/import only)
-// add this import at top of file
-import GoogleScholarIcon from '../icons/GoogleScholar';
-
-// update socialLinks array to include Google Scholar
