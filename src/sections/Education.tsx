@@ -27,7 +27,7 @@ const education: EducationItem[] = [
     period: '2013 – 2015',
     details: [
       'Dissertation: Designed and implemented a web-based ontology editing and development platform using Java and jQuery Mobile.',
-      'Key Modules: Cloud Computing, Advanced Web Technologies, Financial Information Systems, Advanced Programming.',
+      'Key Modules: Cloud Computing, Semantic Web, Knowledge Engineering, Advanced Web Technologies, Financial Information Systems, Advanced Programming.',
     ],
   },
   {
@@ -43,12 +43,12 @@ const education: EducationItem[] = [
 ];
 
 const certificates = [
-  { name: 'Large Language Model Operations (LLMOps)', provider: 'Coursera' },
+  { name: 'Large Language Model Operations (LLMOps)', provider: <a href='https://coursera.org/share/2acd208a6a4f51cbe75018eb8853f787'> Coursera </a> },
   { name: 'AI and Machine Learning in Healthcare', provider: 'Cambridge Centre for AI in Medicine' },
-  { name: 'Generative Adversarial Networks (GANs) Specialization', provider: 'Coursera' },
-  { name: 'Mathematics for Machine Learning and Data Science', provider: 'Coursera' },
-  { name: 'Deep Learning Specialization', provider: 'Coursera' },
-  { name: 'Machine Learning Specialization', provider: 'Coursera' },
+  { name: 'Generative Adversarial Networks (GANs) Specialization', provider: <a href='https://coursera.org/share/a35f812b4ed09bce78ce925e06729e76'> Coursera </a> },
+  { name: 'Mathematics for Machine Learning and Data Science', provider: <a href='https://coursera.org/share/39b2bebf70e3fa38a6191eedb60cc157'> Coursera </a> },
+  { name: 'Deep Learning Specialization', provider: <a href='https://coursera.org/share/02d72350521129bbfe8259a423cc7cc3'> Coursera </a> },
+  { name: 'Machine Learning Specialization', provider: <a href='https://coursera.org/share/331c8c18ed137b614104550cabcfa711'> Coursera </a> },
 ];
 
 const Education = () => {
