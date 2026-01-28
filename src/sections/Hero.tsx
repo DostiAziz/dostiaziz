@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { Github, Linkedin, Mail, ChevronDown, MapPin } from 'lucide-react';
+import GoogleScholarIcon from '../icons/GoogleScholar';
 
 const Hero = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [titleText, setTitleText] = useState('');
-  const fullTitle = 'Machine Learning Developer';
+  const fullTitle = 'Machine Learning Engineer & Researcher';
   
   useEffect(() => {
     setIsLoaded(true);
@@ -206,7 +207,7 @@ const Hero = () => {
             transition: 'all 0.6s cubic-bezier(0.87, 0, 0.13, 1) 2s',
           }}
         >
-          PhD Candidate • AI Researcher • Generative Systems Architect
+          AI/ML Engineer • PhD Researcher (SpeechAI) • Lifelong Learner
         </p>
         
         {/* Location */}
@@ -250,6 +251,13 @@ const Hero = () => {
             className="p-3 rounded-full bg-white/80 backdrop-blur-sm shadow-soft hover:shadow-medium hover:-translate-y-1 transition-all duration-300 group"
           >
             <Mail className="w-5 h-5 text-dark group-hover:text-primary transition-colors" />
+          </a>
+          <a href='https://scholar.google.com/citations?user=kJwocnMAAAAJ&hl=en'
+             className="p-3 rounded-full bg-white/80 backdrop-blur-sm shadow-soft hover:shadow-medium hover:-translate-y-1 transition-all duration-300 group"
+             target="_blank"
+             rel="noopener noreferrer"
+          >
+            <GoogleScholarIcon className="w-5 h-5 text-dark group-hover:text-primary transition-colors" />
           </a>
         </div>
         

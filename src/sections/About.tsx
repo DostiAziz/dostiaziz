@@ -100,7 +100,7 @@ const About = () => {
               }}
             >
               Machine Learning/ AI Engineer and PhD Researcher specializing in{' '}
-              <span className="text-gradient">deep learning</span>,{' '}
+              <span className="text-gradient">Deep learning</span>,{' '}
               <span className="text-gradient">Generative AI</span>, and{' '}
               <span className="text-gradient">Voice Biomarkers</span>.
             </p>
@@ -176,7 +176,7 @@ const About = () => {
               {/* Profile Image */}
               <div className="absolute inset-4 rounded-full overflow-hidden shadow-large animate-morph">
                 <img
-                  src="/profile.jpg"
+                  src={`${import.meta.env.BASE_URL}profile.jpg`}
                   alt="Dosti Aziz"
                   className="w-full h-full object-cover"
                 />
