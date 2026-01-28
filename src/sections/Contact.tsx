@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Mail, MapPin, Phone, Github, Linkedin, Send, CheckCircle } from 'lucide-react';
+import GoogleScholarIcon from '../icons/GoogleScholar';
 
 const Contact = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -49,10 +50,12 @@ const Contact = () => {
   ];
   
   const socialLinks = [
-    { icon: Github, label: 'GitHub', href: 'https://github.com/DostiAziz' },
-    { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/in/DostiAziz' },
-  ];
-  
+  { icon: Github, label: 'GitHub', href: 'https://github.com/DostiAziz' },
+  { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/in/DostiAziz' },
+  { icon: GoogleScholarIcon, label: 'Google Scholar', href: 'https://scholar.google.com/citations?user=kJwocnMAAAAJ&hl=en' },
+];
+
+
   return (
     <section 
       id="contact" 

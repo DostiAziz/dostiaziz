@@ -32,7 +32,7 @@ const About = () => {
     const steps = 60;
     const interval = duration / steps;
     
-    const targets = { years: 10, publications: 15, projects: 5 };
+    const targets = { years: 10, publications: 6, projects: 5 };
     let step = 0;
     
     const counterInterval = setInterval(() => {
@@ -99,10 +99,10 @@ const About = () => {
                 transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s',
               }}
             >
-              Machine Learning Developer and PhD Researcher specializing in{' '}
+              Machine Learning/ AI Engineer and PhD Researcher specializing in{' '}
               <span className="text-gradient">deep learning</span>,{' '}
               <span className="text-gradient">Generative AI</span>, and{' '}
-              <span className="text-gradient">intelligent systems</span>.
+              <span className="text-gradient">Voice Biomarkers</span>.
             </p>
             
             <p 
@@ -115,7 +115,7 @@ const About = () => {
             >
               Currently contributing to Nokia's AI initiatives, designing agentic RAG architectures 
               and autonomous workflows leveraging LangChain, LangGraph, and vector databases. My 
-              research focuses on cross-lingual speech pathology detection and robust AI models 
+              research focuses on language dependent/independent speech pathology detection using AI models
               for healthcare applications.
             </p>
             
@@ -129,7 +129,7 @@ const About = () => {
             >
               Recognized with the <span className="font-semibold text-primary">Outstanding GoBeyond AI Solution Developer</span> award 
               for delivering a fully functional AI application integrating LangGraph workflows and 
-              large language models for complex supply chain data analysis.
+              large language models for complex supply chain data analysis in a short period of time.
             </p>
             
             {/* Stats */}
