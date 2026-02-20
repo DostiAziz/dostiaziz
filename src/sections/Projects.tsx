@@ -1,5 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { ExternalLink, Github, MessageSquare, BookOpen, ShoppingCart, Pill, Network, Fuel } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from '@/components/ui/dialog';
 
 interface Project {
   title: string;
@@ -60,6 +67,7 @@ const Projects = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -111,7 +119,7 @@ const Projects = () => {
           {projects.map((project, index) => (
             <div
               key={project.title}
-              className="group relative"
+              className="group relative cursor-pointer"
               style={{
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? 'rotateX(0deg) translateY(0)' : 'rotateX(30deg) translateY(30px)',
@@ -119,6 +127,7 @@ const Projects = () => {
               }}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
+              onClick={() => setSelectedProject(project)}
             >
               <div
                 className={`relative h-full bg-card rounded-2xl overflow-hidden shadow-soft hover:shadow-glow hover:-translate-y-3 hover:scale-[1.02] border border-border hover:border-primary/50 transition-all duration-300 ${
@@ -182,6 +191,7 @@ const Projects = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-1.5 text-sm text-foreground/60 hover:text-primary transition-colors"
+                        onClick={(e) => e.stopPropagation()}
                       >
                         <Github className="w-4 h-4" />
                         <span>Code</span>
@@ -193,6 +203,7 @@ const Projects = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-1.5 text-sm text-foreground/60 hover:text-primary transition-colors"
+                        onClick={(e) => e.stopPropagation()}
                       >
                         <ExternalLink className="w-4 h-4" />
                         <span>Demo</span>
@@ -205,6 +216,75 @@ const Projects = () => {
           ))}
         </div>
       </div>
+
+      {/* Project Detail Dialog */}
+      <Dialog open={!!selectedProject} onOpenChange={(open) => !open && setSelectedProject(null)}>
+        <DialogContent className="sm:max-w-lg bg-background/80 backdrop-blur-xl">
+          {selectedProject && (() => {
+            const IconComponent = selectedProject.icon;
+            return (
+              <>
+                {/* Subtle gradient accent at top */}
+                <div className={`absolute inset-x-0 top-0 h-1 rounded-t-2xl bg-gradient-to-r ${selectedProject.color} opacity-60`} />
+
+                <DialogHeader>
+                  <div className="flex items-center gap-4 mb-2">
+                    <div
+                      className={`w-16 h-16 rounded-xl bg-gradient-to-br ${selectedProject.color} flex items-center justify-center shadow-lg shrink-0 animate-scale-in`}
+                    >
+                      <IconComponent className="w-8 h-8 text-white" />
+                    </div>
+                    <DialogTitle className="text-2xl font-bold animate-slide-up" style={{ animationDelay: '0.05s', animationFillMode: 'both' }}>
+                      {selectedProject.title}
+                    </DialogTitle>
+                  </div>
+                  <DialogDescription className="text-base text-foreground/70 leading-relaxed animate-slide-up" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
+                    {selectedProject.description}
+                  </DialogDescription>
+                </DialogHeader>
+
+                <div className="flex flex-wrap gap-2 mt-2 animate-slide-up" style={{ animationDelay: '0.15s', animationFillMode: 'both' }}>
+                  {selectedProject.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1.5 text-sm font-medium bg-muted/60 rounded-full text-foreground/70 border border-border/30"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                {(selectedProject.githubUrl || selectedProject.demoUrl) && (
+                  <div className="flex items-center gap-4 mt-4 animate-slide-up" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
+                    {selectedProject.githubUrl && (
+                      <a
+                        href={selectedProject.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-sm font-medium text-foreground/60 hover:text-primary transition-colors"
+                      >
+                        <Github className="w-5 h-5" />
+                        <span>View Code</span>
+                      </a>
+                    )}
+                    {selectedProject.demoUrl && (
+                      <a
+                        href={selectedProject.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-sm font-medium text-foreground/60 hover:text-primary transition-colors"
+                      >
+                        <ExternalLink className="w-5 h-5" />
+                        <span>Live Demo</span>
+                      </a>
+                    )}
+                  </div>
+                )}
+              </>
+            );
+          })()}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
