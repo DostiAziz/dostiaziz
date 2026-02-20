@@ -72,13 +72,15 @@ const Contact = () => {
             transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
           }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-dark mb-4">
-            Get In Touch
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+            <span className="text-gradient">Get In Touch</span>
           </h2>
-          <p className="text-lg text-dark/60 max-w-2xl mx-auto">
+          <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
             Let's discuss AI, research, or collaboration opportunities
           </p>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full mt-4" />
+          <div className="w-20 h-1 bg-gradient-to-r from-primary via-accent to-accent-purple mx-auto rounded-full mt-4 animate-gradient-shift"
+            style={{ backgroundSize: '200% 200%' }}
+          />
         </div>
         
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
@@ -94,11 +96,11 @@ const Contact = () => {
             <form onSubmit={handleSubmit} className="space-y-5">
               {/* Name Field */}
               <div className="relative">
-                <label 
+                <label
                   className={`absolute left-4 transition-all duration-200 pointer-events-none ${
                     focusedField === 'name' || formData.name
                       ? 'top-1 text-xs text-primary font-medium'
-                      : 'top-4 text-dark/50'
+                      : 'top-4 text-foreground/50'
                   }`}
                 >
                   Your Name
@@ -109,18 +111,18 @@ const Contact = () => {
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   onFocus={() => setFocusedField('name')}
                   onBlur={() => setFocusedField(null)}
-                  className="w-full px-4 pt-6 pb-3 bg-white rounded-xl border-2 border-neutral-medium focus:border-primary outline-none transition-colors duration-200"
+                  className="w-full px-4 pt-6 pb-3 bg-card rounded-xl border-2 border-border focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all duration-200"
                   required
                 />
               </div>
               
               {/* Email Field */}
               <div className="relative">
-                <label 
+                <label
                   className={`absolute left-4 transition-all duration-200 pointer-events-none ${
                     focusedField === 'email' || formData.email
                       ? 'top-1 text-xs text-primary font-medium'
-                      : 'top-4 text-dark/50'
+                      : 'top-4 text-foreground/50'
                   }`}
                 >
                   Email Address
@@ -131,18 +133,18 @@ const Contact = () => {
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   onFocus={() => setFocusedField('email')}
                   onBlur={() => setFocusedField(null)}
-                  className="w-full px-4 pt-6 pb-3 bg-white rounded-xl border-2 border-neutral-medium focus:border-primary outline-none transition-colors duration-200"
+                  className="w-full px-4 pt-6 pb-3 bg-card rounded-xl border-2 border-border focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all duration-200"
                   required
                 />
               </div>
               
               {/* Message Field */}
               <div className="relative">
-                <label 
+                <label
                   className={`absolute left-4 transition-all duration-200 pointer-events-none ${
                     focusedField === 'message' || formData.message
                       ? 'top-1 text-xs text-primary font-medium'
-                      : 'top-4 text-dark/50'
+                      : 'top-4 text-foreground/50'
                   }`}
                 >
                   Your Message
@@ -153,7 +155,7 @@ const Contact = () => {
                   onFocus={() => setFocusedField('message')}
                   onBlur={() => setFocusedField(null)}
                   rows={5}
-                  className="w-full px-4 pt-6 pb-3 bg-white rounded-xl border-2 border-neutral-medium focus:border-primary outline-none transition-colors duration-200 resize-none"
+                  className="w-full px-4 pt-6 pb-3 bg-card rounded-xl border-2 border-border focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all duration-200 resize-none"
                   required
                 />
               </div>
@@ -165,8 +167,9 @@ const Contact = () => {
                 className={`w-full flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white transition-all duration-300 ${
                   isSubmitted
                     ? 'bg-success'
-                    : 'bg-primary hover:bg-dark shadow-glow hover:shadow-glow-lg hover:-translate-y-1'
+                    : 'bg-gradient-to-r from-primary via-accent to-accent-purple hover:shadow-glow-lg hover:-translate-y-1 animate-gradient-shift'
                 }`}
+                style={!isSubmitted ? { backgroundSize: '200% 200%' } : undefined}
               >
                 {isSubmitting ? (
                   <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -209,24 +212,24 @@ const Contact = () => {
                   {item.href ? (
                     <a
                       href={item.href}
-                      className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-soft hover:shadow-medium transition-all duration-300 group-hover:-translate-y-1"
+                      className="flex items-center gap-4 p-4 bg-card rounded-xl shadow-soft hover:shadow-glow transition-all duration-300 group-hover:-translate-y-1"
                     >
                       <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                         <item.icon className="w-5 h-5 text-primary" />
                       </div>
                       <div>
-                        <p className="text-xs text-dark/50">{item.label}</p>
-                        <p className="font-medium text-dark text-sm">{item.value}</p>
+                        <p className="text-xs text-foreground/50">{item.label}</p>
+                        <p className="font-medium text-foreground text-sm">{item.value}</p>
                       </div>
                     </a>
                   ) : (
-                    <div className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-soft">
+                    <div className="flex items-center gap-4 p-4 bg-card rounded-xl shadow-soft">
                       <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                         <item.icon className="w-5 h-5 text-primary" />
                       </div>
                       <div>
-                        <p className="text-xs text-dark/50">{item.label}</p>
-                        <p className="font-medium text-dark text-sm">{item.value}</p>
+                        <p className="text-xs text-foreground/50">{item.label}</p>
+                        <p className="font-medium text-foreground text-sm">{item.value}</p>
                       </div>
                     </div>
                   )}
@@ -235,14 +238,14 @@ const Contact = () => {
             </div>
             
             {/* Social Links */}
-            <div 
+            <div
               className="pt-4"
               style={{
                 opacity: isVisible ? 1 : 0,
                 transition: 'opacity 0.5s ease 0.7s',
               }}
             >
-              <p className="text-sm text-dark/50 mb-3">Connect on social media</p>
+              <p className="text-sm text-foreground/50 mb-3">Connect on social media</p>
               <div className="flex gap-3">
                 {socialLinks.map((social, index) => (
                   <a
@@ -250,14 +253,14 @@ const Contact = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center w-12 h-12 bg-white rounded-xl shadow-soft hover:shadow-medium hover:-translate-y-1 transition-all duration-300 group"
+                    className="flex items-center justify-center w-12 h-12 bg-card rounded-xl shadow-soft hover:shadow-medium hover:-translate-y-1 border border-border hover:border-primary/50 transition-all duration-300 group"
                     style={{
                       opacity: isVisible ? 1 : 0,
                       transform: isVisible ? 'scale(1)' : 'scale(0)',
                       transition: `all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) ${0.8 + index * 0.1}s`,
                     }}
                   >
-                    <social.icon className="w-5 h-5 text-dark group-hover:text-primary transition-colors" />
+                    <social.icon className="w-5 h-5 text-foreground group-hover:text-primary transition-colors" />
                   </a>
                 ))}
               </div>

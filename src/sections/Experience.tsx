@@ -95,7 +95,7 @@ const Experience = () => {
     <section 
       id="experience" 
       ref={sectionRef}
-      className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-neutral-light/50"
+      className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-muted/50"
     >
       <div className="max-w-5xl mx-auto">
         {/* Section Header */}
@@ -107,20 +107,22 @@ const Experience = () => {
             transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
           }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-dark mb-4">
-            Professional Experience
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+            <span className="text-gradient">Professional Experience</span>
           </h2>
-          <p className="text-lg text-dark/60 max-w-2xl mx-auto">
+          <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
             My journey through AI research and industry
           </p>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full mt-4" />
+          <div className="w-20 h-1 bg-gradient-to-r from-primary via-accent to-accent-purple mx-auto rounded-full mt-4 animate-gradient-shift"
+            style={{ backgroundSize: '200% 200%' }}
+          />
         </div>
         
         {/* Timeline */}
         <div className="relative">
           {/* Timeline Line */}
-          <div 
-            className="absolute left-4 sm:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent to-primary/30"
+          <div
+            className="absolute left-4 sm:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent to-accent-purple"
             style={{
               opacity: isVisible ? 1 : 0,
               transition: 'opacity 1s ease 0.3s',
@@ -142,23 +144,23 @@ const Experience = () => {
                 onMouseLeave={() => setHoveredIndex(null)}
               >
                 {/* Timeline Dot */}
-                <div 
-                  className={`absolute left-2 sm:left-6 w-4 h-4 rounded-full border-4 border-white shadow-md transition-all duration-300 ${
-                    hoveredIndex === index ? 'bg-accent scale-125' : 'bg-primary'
+                <div
+                  className={`absolute left-2 sm:left-6 w-4 h-4 rounded-full border-4 border-background shadow-glow transition-all duration-300 ${
+                    hoveredIndex === index ? 'bg-accent scale-125 shadow-glow-lg' : 'bg-primary'
                   }`}
                   style={{ top: '1.5rem' }}
                 />
                 
                 {/* Card */}
-                <div 
-                  className={`bg-white rounded-2xl p-6 sm:p-8 shadow-soft transition-all duration-300 ${
-                    hoveredIndex === index ? 'shadow-large -translate-y-2' : ''
+                <div
+                  className={`bg-card rounded-2xl p-6 sm:p-8 shadow-soft hover:shadow-glow hover:-translate-y-2 border border-border hover:border-primary/50 transition-all duration-300 ${
+                    hoveredIndex === index ? 'shadow-glow -translate-y-2 border-primary/50' : ''
                   }`}
                 >
                   {/* Header */}
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                     <div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-dark mb-1">
+                      <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-1">
                         {exp.role}
                       </h3>
                       <div className="flex items-center gap-2 text-primary font-semibold">
@@ -166,7 +168,7 @@ const Experience = () => {
                         <span>{exp.company}</span>
                       </div>
                     </div>
-                    <div className="flex flex-col sm:items-end gap-1 text-sm text-dark/60">
+                    <div className="flex flex-col sm:items-end gap-1 text-sm text-foreground/60">
                       <div className="flex items-center gap-1">
                         <Calendar className="w-4 h-4" />
                         <span>{exp.period}</span>
@@ -188,9 +190,9 @@ const Experience = () => {
                   {/* Description */}
                   <ul className="space-y-2">
                     {exp.description.map((item, itemIndex) => (
-                      <li 
+                      <li
                         key={itemIndex}
-                        className="flex items-start gap-3 text-dark/70 text-sm sm:text-base"
+                        className="flex items-start gap-3 text-foreground/70 text-sm sm:text-base"
                       >
                         <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
                         <span>{item}</span>

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Github, Linkedin, Mail, ChevronDown, MapPin } from 'lucide-react';
+import { useTheme } from 'next-themes';
 import GoogleScholarIcon from '../icons/GoogleScholar';
 
 const Hero = () => {
@@ -7,6 +8,7 @@ const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [titleText, setTitleText] = useState('');
   const fullTitle = 'Machine Learning Engineer & Researcher';
+  const { resolvedTheme } = useTheme();
   
   useEffect(() => {
     setIsLoaded(true);
@@ -104,7 +106,9 @@ const Hero = () => {
         // Draw particle
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(56, 152, 236, 0.6)';
+        ctx.fillStyle = resolvedTheme === 'dark'
+          ? 'rgba(56, 152, 236, 0.8)'
+          : 'rgba(56, 152, 236, 0.6)';
         ctx.fill();
         
         // Draw connections
@@ -115,7 +119,8 @@ const Hero = () => {
           const dist2 = Math.sqrt(dx2 * dx2 + dy2 * dy2);
           
           if (dist2 < connectionDistance) {
-            const opacity = (1 - dist2 / connectionDistance) * 0.3;
+            const baseOpacity = resolvedTheme === 'dark' ? 0.4 : 0.3;
+            const opacity = (1 - dist2 / connectionDistance) * baseOpacity;
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(other.x, other.y);
@@ -186,8 +191,8 @@ const Hero = () => {
         
         {/* Title with typewriter effect */}
         <div className="h-12 sm:h-14 mb-4">
-          <p 
-            className="text-xl sm:text-2xl md:text-3xl text-dark/80 font-medium"
+          <p
+            className="text-xl sm:text-2xl md:text-3xl text-foreground/80 font-medium"
             style={{
               opacity: isLoaded ? 1 : 0,
               transition: 'opacity 0.5s ease 1s',
@@ -197,10 +202,10 @@ const Hero = () => {
             <span className="inline-block w-0.5 h-6 bg-primary ml-1 animate-pulse" />
           </p>
         </div>
-        
+
         {/* Tagline */}
-        <p 
-          className="text-base sm:text-lg text-dark/60 mb-8 max-w-2xl mx-auto"
+        <p
+          className="text-base sm:text-lg text-foreground/60 mb-8 max-w-2xl mx-auto"
           style={{
             opacity: isLoaded ? 1 : 0,
             filter: isLoaded ? 'blur(0)' : 'blur(10px)',
@@ -209,10 +214,10 @@ const Hero = () => {
         >
           AI/ML Engineer • PhD Researcher (SpeechAI) • Lifelong Learner
         </p>
-        
+
         {/* Location */}
-        <div 
-          className="flex items-center justify-center gap-2 text-dark/50 mb-10"
+        <div
+          className="flex items-center justify-center gap-2 text-foreground/50 mb-10"
           style={{
             opacity: isLoaded ? 1 : 0,
             transition: 'opacity 0.5s ease 2.2s',
@@ -234,30 +239,30 @@ const Hero = () => {
             href="https://github.com/DostiAziz"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-3 rounded-full bg-white/80 backdrop-blur-sm shadow-soft hover:shadow-medium hover:-translate-y-1 transition-all duration-300 group"
+            className="p-3 rounded-full bg-card/80 backdrop-blur-sm shadow-soft hover:shadow-medium hover:-translate-y-1 transition-all duration-300 group"
           >
-            <Github className="w-5 h-5 text-dark group-hover:text-primary transition-colors" />
+            <Github className="w-5 h-5 text-foreground group-hover:text-primary transition-colors" />
           </a>
           <a
             href="https://linkedin.com/in/DostiAziz"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-3 rounded-full bg-white/80 backdrop-blur-sm shadow-soft hover:shadow-medium hover:-translate-y-1 transition-all duration-300 group"
+            className="p-3 rounded-full bg-card/80 backdrop-blur-sm shadow-soft hover:shadow-medium hover:-translate-y-1 transition-all duration-300 group"
           >
-            <Linkedin className="w-5 h-5 text-dark group-hover:text-primary transition-colors" />
+            <Linkedin className="w-5 h-5 text-foreground group-hover:text-primary transition-colors" />
           </a>
           <a
             href="mailto:dosti.hamasalih@gmail.com"
-            className="p-3 rounded-full bg-white/80 backdrop-blur-sm shadow-soft hover:shadow-medium hover:-translate-y-1 transition-all duration-300 group"
+            className="p-3 rounded-full bg-card/80 backdrop-blur-sm shadow-soft hover:shadow-medium hover:-translate-y-1 transition-all duration-300 group"
           >
-            <Mail className="w-5 h-5 text-dark group-hover:text-primary transition-colors" />
+            <Mail className="w-5 h-5 text-foreground group-hover:text-primary transition-colors" />
           </a>
           <a href='https://scholar.google.com/citations?user=kJwocnMAAAAJ&hl=en'
-             className="p-3 rounded-full bg-white/80 backdrop-blur-sm shadow-soft hover:shadow-medium hover:-translate-y-1 transition-all duration-300 group"
+             className="p-3 rounded-full bg-card/80 backdrop-blur-sm shadow-soft hover:shadow-medium hover:-translate-y-1 transition-all duration-300 group"
              target="_blank"
              rel="noopener noreferrer"
           >
-            <GoogleScholarIcon className="w-5 h-5 text-dark group-hover:text-primary transition-colors" />
+            <GoogleScholarIcon className="w-5 h-5 text-foreground group-hover:text-primary transition-colors" />
           </a>
         </div>
         
@@ -283,7 +288,7 @@ const Hero = () => {
           transition: 'opacity 0.4s ease 2.8s',
         }}
       >
-        <span className="text-xs text-dark/40">Scroll to explore</span>
+        <span className="text-xs text-foreground/40">Scroll to explore</span>
         <ChevronDown className="w-5 h-5 text-primary animate-bounce" />
       </div>
     </section>

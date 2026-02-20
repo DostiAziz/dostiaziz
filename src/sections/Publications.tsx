@@ -98,13 +98,15 @@ const Publications = () => {
             transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
           }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-dark mb-4">
-            Publications
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+            <span className="text-gradient">Publications</span>
           </h2>
-          <p className="text-lg text-dark/60 max-w-2xl mx-auto">
+          <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
             Research contributions to AI and speech processing
           </p>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full mt-4" />
+          <div className="w-20 h-1 bg-gradient-to-r from-primary via-accent to-accent-purple mx-auto rounded-full mt-4 animate-gradient-shift"
+            style={{ backgroundSize: '200% 200%' }}
+          />
         </div>
         
         {/* Journal Articles */}
@@ -118,7 +120,7 @@ const Publications = () => {
             }}
           >
             <BookOpen className="w-5 h-5 text-primary" />
-            <h3 className="text-xl font-bold text-dark">Journal Articles</h3>
+            <h3 className="text-xl font-bold text-foreground">Journal Articles</h3>
           </div>
           
           <div className="space-y-4">
@@ -134,9 +136,9 @@ const Publications = () => {
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
-                <div 
-                  className={`relative bg-white rounded-xl p-5 sm:p-6 shadow-soft transition-all duration-300 ${
-                    hoveredIndex === index ? 'shadow-medium -translate-y-1' : ''
+                <div
+                  className={`relative bg-card rounded-xl p-5 sm:p-6 shadow-soft hover:shadow-glow border border-border hover:border-primary/50 transition-all duration-300 ${
+                    hoveredIndex === index ? 'shadow-glow -translate-y-1 border-primary/50' : ''
                   }`}
                 >
                   {/* Animated Border */}
@@ -151,15 +153,15 @@ const Publications = () => {
                   
                   <div className="pl-4">
                     {/* Title */}
-                    <h4 className="text-base sm:text-lg font-semibold text-dark mb-2 group-hover:text-primary transition-colors duration-300">
+                    <h4 className="text-base sm:text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
                       {pub.title}
                     </h4>
-                    
+
                     {/* Authors & Venue */}
-                    <p className="text-sm text-dark/60 mb-1">
+                    <p className="text-sm text-foreground/60 mb-1">
                       {pub.authors}
                     </p>
-                    <p className="text-sm text-dark/50">
+                    <p className="text-sm text-foreground/50">
                       <span className="italic">{pub.venue}</span>, {pub.year}
                     </p>
                     
@@ -193,7 +195,7 @@ const Publications = () => {
             }}
           >
             <FileText className="w-5 h-5 text-accent" />
-            <h3 className="text-xl font-bold text-dark">Conference Proceedings</h3>
+            <h3 className="text-xl font-bold text-foreground">Conference Proceedings</h3>
           </div>
           
           <div className="space-y-4">
@@ -209,9 +211,9 @@ const Publications = () => {
                 onMouseEnter={() => setHoveredIndex(index + journalPubs.length)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
-                <div 
-                  className={`relative bg-white rounded-xl p-5 sm:p-6 shadow-soft transition-all duration-300 ${
-                    hoveredIndex === index + journalPubs.length ? 'shadow-medium -translate-y-1' : ''
+                <div
+                  className={`relative bg-card rounded-xl p-5 sm:p-6 shadow-soft hover:shadow-glow border border-border hover:border-primary/50 transition-all duration-300 ${
+                    hoveredIndex === index + journalPubs.length ? 'shadow-glow -translate-y-1 border-primary/50' : ''
                   }`}
                 >
                   {/* Animated Border */}
@@ -226,15 +228,15 @@ const Publications = () => {
                   
                   <div className="pl-4">
                     {/* Title */}
-                    <h4 className="text-base sm:text-lg font-semibold text-dark mb-2 group-hover:text-accent transition-colors duration-300">
+                    <h4 className="text-base sm:text-lg font-semibold text-foreground mb-2 group-hover:text-accent transition-colors duration-300">
                       {pub.title}
                     </h4>
-                    
+
                     {/* Authors & Venue */}
-                    <p className="text-sm text-dark/60 mb-1">
+                    <p className="text-sm text-foreground/60 mb-1">
                       {pub.authors}
                     </p>
-                    <p className="text-sm text-dark/50">
+                    <p className="text-sm text-foreground/50">
                       <span className="italic">{pub.venue}</span>, {pub.year}
                     </p>
                   </div>

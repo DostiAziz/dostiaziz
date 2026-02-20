@@ -81,18 +81,20 @@ const About = () => {
             transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
           }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-dark mb-4">
-            About Me
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+            <span className="text-gradient">About Me</span>
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
+          <div className="w-20 h-1 bg-gradient-to-r from-primary via-accent to-accent-purple mx-auto rounded-full mt-4 animate-gradient-shift"
+            style={{ backgroundSize: '200% 200%' }}
+          />
         </div>
         
         {/* Content Grid */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column - Text Content */}
           <div className="space-y-6">
-            <p 
-              className="text-xl sm:text-2xl font-semibold text-dark leading-relaxed"
+            <p
+              className="text-xl sm:text-2xl font-semibold text-foreground leading-relaxed"
               style={{
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
@@ -106,7 +108,7 @@ const About = () => {
             </p>
             
             <p 
-              className="text-base sm:text-lg text-dark/70 leading-relaxed"
+              className="text-base sm:text-lg text-foreground/70 leading-relaxed"
               style={{
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
@@ -120,7 +122,7 @@ const About = () => {
             </p>
             
             <p 
-              className="text-base sm:text-lg text-dark/70 leading-relaxed"
+              className="text-base sm:text-lg text-foreground/70 leading-relaxed"
               style={{
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
@@ -144,13 +146,13 @@ const About = () => {
               {stats.map((stat, index) => (
                 <div 
                   key={index}
-                  className="text-center p-4 rounded-2xl bg-white shadow-soft hover:shadow-medium transition-shadow duration-300"
+                  className="text-center p-4 rounded-2xl bg-card shadow-soft hover:shadow-medium transition-shadow duration-300"
                 >
                   <stat.icon className="w-6 h-6 text-primary mx-auto mb-2" />
                   <div className="text-2xl sm:text-3xl font-bold text-gradient">
                     {stat.value}{stat.suffix}
                   </div>
-                  <div className="text-xs sm:text-sm text-dark/60">{stat.label}</div>
+                  <div className="text-xs sm:text-sm text-foreground/60">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -192,7 +194,7 @@ const About = () => {
                 return (
                   <span
                     key={tag}
-                    className="absolute px-3 py-1 text-xs font-medium bg-white/90 backdrop-blur-sm rounded-full shadow-soft text-dark/80 whitespace-nowrap"
+                    className="absolute px-3 py-1 text-xs font-medium bg-card/90 backdrop-blur-sm rounded-full shadow-soft text-foreground/80 whitespace-nowrap overflow-hidden"
                     style={{
                       left: `calc(50% + ${x}px)`,
                       top: `calc(50% + ${y}px)`,
@@ -202,7 +204,13 @@ const About = () => {
                       animation: isVisible ? `float ${4 + index * 0.5}s ease-in-out infinite ${index * 0.3}s` : 'none',
                     }}
                   >
-                    {tag}
+                    <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-card/40 to-transparent"
+                      style={{
+                        transform: 'translateX(-100%)',
+                        animation: isVisible ? 'shimmer 3s infinite' : 'none'
+                      }}
+                    />
+                    <span className="relative z-10">{tag}</span>
                   </span>
                 );
               })}

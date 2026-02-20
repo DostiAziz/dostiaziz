@@ -80,13 +80,15 @@ const Skills = () => {
             transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
           }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-dark mb-4">
-            Technical Skills
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+            <span className="text-gradient">Technical Skills</span>
           </h2>
-          <p className="text-lg text-dark/60 max-w-2xl mx-auto">
+          <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
             Technologies and tools I work with
           </p>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full mt-4" />
+          <div className="w-20 h-1 bg-gradient-to-r from-primary via-accent to-accent-purple mx-auto rounded-full mt-4 animate-gradient-shift"
+            style={{ backgroundSize: '200% 200%' }}
+          />
         </div>
         
         {/* Category Tabs */}
@@ -104,8 +106,8 @@ const Skills = () => {
               onClick={() => setActiveCategory(index)}
               className={`flex items-center gap-2 px-5 py-3 rounded-full font-medium transition-all duration-300 ${
                 activeCategory === index
-                  ? 'bg-primary text-white shadow-glow'
-                  : 'bg-white text-dark/70 shadow-soft hover:shadow-medium hover:text-dark'
+                  ? 'bg-primary text-white shadow-glow scale-110'
+                  : 'bg-card text-foreground/70 shadow-soft hover:shadow-medium hover:scale-105 hover:text-foreground'
               }`}
             >
               <category.icon className="w-4 h-4" />
@@ -125,12 +127,13 @@ const Skills = () => {
         >
           {/* Central Hub */}
           <div className="flex flex-col items-center mb-10">
-            <div 
-              className={`w-20 h-20 rounded-full bg-gradient-to-br ${currentCategory.color} flex items-center justify-center shadow-glow transition-all duration-500`}
+            <div
+              className={`relative w-20 h-20 rounded-full bg-gradient-to-br ${currentCategory.color} flex items-center justify-center shadow-glow animate-pulse-glow transition-all duration-500`}
             >
-              <currentCategory.icon className="w-10 h-10 text-white" />
+              <div className="absolute inset-0 rounded-full border-2 border-primary/30 animate-spin" style={{ animationDuration: '8s' }} />
+              <currentCategory.icon className="w-10 h-10 text-white relative z-10" />
             </div>
-            <h3 className="mt-4 text-xl font-bold text-dark">{currentCategory.name}</h3>
+            <h3 className="mt-4 text-xl font-bold text-foreground">{currentCategory.name}</h3>
           </div>
           
           {/* Skills Grid */}
@@ -147,16 +150,16 @@ const Skills = () => {
                 onMouseEnter={() => setHoveredSkill(skill)}
                 onMouseLeave={() => setHoveredSkill(null)}
               >
-                <div 
+                <div
                   className={`px-5 py-3 rounded-xl font-medium text-sm sm:text-base transition-all duration-300 ${
                     hoveredSkill === skill
                       ? 'bg-gradient-to-r from-primary to-accent text-white shadow-glow'
-                      : 'bg-white text-dark/80 shadow-soft hover:shadow-medium'
+                      : 'bg-card text-foreground/80 shadow-soft hover:shadow-medium border border-border hover:border-primary/50'
                   }`}
                 >
                   {skill}
                 </div>
-                
+
                 {/* Glow effect on hover */}
                 {hoveredSkill === skill && (
                   <div className="absolute inset-0 rounded-xl bg-primary/20 blur-xl -z-10 animate-pulse" />
@@ -194,13 +197,13 @@ const Skills = () => {
             { icon: GitBranch, label: 'Version Control', desc: 'Git, GitHub' },
             { icon: Terminal, label: 'Systems', desc: 'Linux, HPC' },
           ].map((item) => (
-            <div 
+            <div
               key={item.label}
-              className="flex flex-col items-center p-4 rounded-xl bg-white shadow-soft hover:shadow-medium transition-shadow duration-300"
+              className="flex flex-col items-center p-4 rounded-xl bg-card shadow-soft hover:shadow-medium transition-shadow duration-300"
             >
               <item.icon className="w-6 h-6 text-primary mb-2" />
-              <span className="font-semibold text-dark text-sm">{item.label}</span>
-              <span className="text-xs text-dark/60">{item.desc}</span>
+              <span className="font-semibold text-foreground text-sm">{item.label}</span>
+              <span className="text-xs text-foreground/60">{item.desc}</span>
             </div>
           ))}
         </div>

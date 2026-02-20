@@ -35,8 +35,8 @@ const Footer = () => {
       className="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-dark"
     >
       {/* Animated Gradient Background */}
-      <div 
-        className="absolute inset-0 opacity-20"
+      <div
+        className="absolute inset-0 opacity-10 dark:opacity-20"
         style={{
           background: 'linear-gradient(135deg, #3898ec 0%, #6366f1 50%, #8b5cf6 100%)',
           backgroundSize: '200% 200%',
@@ -138,6 +138,7 @@ const Footer = () => {
             transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
             transition: 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 1.4s',
           }}
+          aria-label="Scroll to top"
         >
           <ArrowUp className="w-5 h-5" />
         </button>

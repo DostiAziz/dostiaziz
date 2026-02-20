@@ -79,7 +79,7 @@ const Education = () => {
     <section 
       id="education" 
       ref={sectionRef}
-      className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-neutral-light/50"
+      className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-muted/50"
     >
       <div className="max-w-5xl mx-auto">
         {/* Section Header */}
@@ -91,13 +91,15 @@ const Education = () => {
             transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
           }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-dark mb-4">
-            Education
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+            <span className="text-gradient">Education</span>
           </h2>
-          <p className="text-lg text-dark/60 max-w-2xl mx-auto">
+          <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
             Academic foundation in computer science and AI
           </p>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full mt-4" />
+          <div className="w-20 h-1 bg-gradient-to-r from-primary via-accent to-accent-purple mx-auto rounded-full mt-4 animate-gradient-shift"
+            style={{ backgroundSize: '200% 200%' }}
+          />
         </div>
         
         {/* Education Cards */}
@@ -114,27 +116,27 @@ const Education = () => {
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              <div 
-                className={`relative h-full bg-white rounded-2xl overflow-hidden shadow-soft transition-all duration-300 preserve-3d ${
-                  hoveredIndex === index ? 'shadow-large' : ''
+              <div
+                className={`relative h-full bg-card rounded-2xl overflow-hidden shadow-soft hover:shadow-glow border border-border hover:border-primary/50 transition-all duration-300 preserve-3d ${
+                  hoveredIndex === index ? 'shadow-glow border-primary/50' : ''
                 }`}
               >
                 {/* Header Layer */}
-                <div 
+                <div
                   className="p-6 bg-gradient-to-br from-primary/5 to-accent/5 transition-transform duration-300"
                   style={{
                     transform: hoveredIndex === index ? 'translateZ(6px)' : 'translateZ(0)',
                   }}
                 >
-                  <GraduationCap className="w-8 h-8 text-primary mb-3" />
-                  <h3 className="text-lg font-bold text-dark leading-tight">
+                  <GraduationCap className={`w-8 h-8 text-primary mb-3 ${hoveredIndex === index ? 'shadow-glow' : ''}`} />
+                  <h3 className="text-lg font-bold text-foreground leading-tight">
                     {edu.degree}
                   </h3>
                 </div>
                 
                 {/* Institution Layer */}
-                <div 
-                  className="px-6 py-4 border-b border-neutral-light transition-transform duration-300"
+                <div
+                  className="px-6 py-4 border-b border-border transition-transform duration-300"
                   style={{
                     transform: hoveredIndex === index ? 'translateZ(4px)' : 'translateZ(0)',
                   }}
@@ -142,7 +144,7 @@ const Education = () => {
                   <p className="font-semibold text-primary text-sm">
                     {edu.institution}
                   </p>
-                  <div className="flex items-center gap-4 mt-2 text-xs text-dark/60">
+                  <div className="flex items-center gap-4 mt-2 text-xs text-foreground/60">
                     <span className="flex items-center gap-1">
                       <MapPin className="w-3 h-3" />
                       {edu.location}
@@ -155,7 +157,7 @@ const Education = () => {
                 </div>
                 
                 {/* Details Layer */}
-                <div 
+                <div
                   className="p-6 transition-transform duration-300"
                   style={{
                     transform: hoveredIndex === index ? 'translateZ(2px)' : 'translateZ(0)',
@@ -163,9 +165,9 @@ const Education = () => {
                 >
                   <ul className="space-y-2">
                     {edu.details.map((detail, detailIndex) => (
-                      <li 
+                      <li
                         key={detailIndex}
-                        className="text-sm text-dark/70 flex items-start gap-2"
+                        className="text-sm text-foreground/70 flex items-start gap-2"
                       >
                         <span className="w-1 h-1 rounded-full bg-primary mt-2 flex-shrink-0" />
                         <span>{detail}</span>
@@ -189,17 +191,17 @@ const Education = () => {
         >
           <button
             onClick={() => setShowCertificates(!showCertificates)}
-            className="w-full flex items-center justify-between p-5 bg-white rounded-xl shadow-soft hover:shadow-medium transition-all duration-300"
+            className="w-full flex items-center justify-between p-5 bg-card rounded-xl shadow-soft hover:shadow-glow border border-border hover:border-primary/50 transition-all duration-300"
           >
             <div className="flex items-center gap-3">
               <Award className="w-6 h-6 text-primary" />
-              <span className="font-semibold text-dark">Professional Certificates</span>
+              <span className="font-semibold text-foreground">Professional Certificates</span>
               <span className="px-2 py-0.5 bg-primary/10 rounded-full text-xs font-medium text-primary">
                 {certificates.length}
               </span>
             </div>
-            <ChevronDown 
-              className={`w-5 h-5 text-dark/60 transition-transform duration-300 ${showCertificates ? 'rotate-180' : ''}`} 
+            <ChevronDown
+              className={`w-5 h-5 text-foreground/60 transition-transform duration-300 ${showCertificates ? 'rotate-180' : ''}`}
             />
           </button>
           
@@ -212,7 +214,7 @@ const Education = () => {
               {certificates.map((cert, index) => (
                 <div
                   key={index}
-                  className="flex items-start gap-3 p-4 bg-white rounded-xl shadow-soft hover:shadow-medium transition-shadow duration-300"
+                  className="flex items-start gap-3 p-4 bg-card rounded-xl shadow-soft hover:shadow-glow border border-border hover:border-primary/50 transition-all duration-300"
                   style={{
                     opacity: showCertificates ? 1 : 0,
                     transform: showCertificates ? 'translateY(0)' : 'translateY(-10px)',
@@ -221,8 +223,8 @@ const Education = () => {
                 >
                   <Award className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="font-medium text-dark text-sm">{cert.name}</p>
-                    <p className="text-xs text-dark/50">{cert.provider}</p>
+                    <p className="font-medium text-foreground text-sm">{cert.name}</p>
+                    <p className="text-xs text-foreground/50">{cert.provider}</p>
                   </div>
                 </div>
               ))}

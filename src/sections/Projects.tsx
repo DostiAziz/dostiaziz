@@ -83,7 +83,7 @@ const Projects = () => {
     <section 
       id="projects" 
       ref={sectionRef}
-      className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-neutral-light/50"
+      className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-muted/50"
     >
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
@@ -95,13 +95,15 @@ const Projects = () => {
             transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
           }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-dark mb-4">
-            Featured Projects
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+            <span className="text-gradient">Featured Projects</span>
           </h2>
-          <p className="text-lg text-dark/60 max-w-2xl mx-auto">
+          <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
             AI systems and applications I've built
           </p>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full mt-4" />
+          <div className="w-20 h-1 bg-gradient-to-r from-primary via-accent to-accent-purple mx-auto rounded-full mt-4 animate-gradient-shift"
+            style={{ backgroundSize: '200% 200%' }}
+          />
         </div>
         
         {/* Projects Grid */}
@@ -118,14 +120,14 @@ const Projects = () => {
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              <div 
-                className={`relative h-full bg-white rounded-2xl overflow-hidden shadow-soft transition-all duration-300 ${
-                  hoveredIndex === index ? 'shadow-large -translate-y-3' : ''
+              <div
+                className={`relative h-full bg-card rounded-2xl overflow-hidden shadow-soft hover:shadow-glow hover:-translate-y-3 hover:scale-[1.02] border border-border hover:border-primary/50 transition-all duration-300 ${
+                  hoveredIndex === index ? 'shadow-glow -translate-y-3 scale-[1.02]' : ''
                 }`}
               >
                 {/* Holographic Gradient Background */}
-                <div 
-                  className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-10 dark:group-hover:opacity-15 transition-opacity duration-500`}
                 />
                 
                 {/* Shine Effect */}
@@ -141,28 +143,31 @@ const Projects = () => {
                 {/* Content */}
                 <div className="relative p-6 sm:p-8">
                   {/* Icon */}
-                  <div 
-                    className={`w-14 h-14 rounded-xl bg-gradient-to-br ${project.color} flex items-center justify-center mb-5 shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3`}
+                  <div
+                    className={`w-14 h-14 rounded-xl bg-gradient-to-br ${project.color} flex items-center justify-center mb-5 shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:rotate-3`}
+                    style={{
+                      transform: hoveredIndex === index ? 'perspective(1000px) rotateY(10deg)' : 'perspective(1000px) rotateY(0deg)',
+                    }}
                   >
                     <project.icon className="w-7 h-7 text-white" />
                   </div>
                   
                   {/* Title */}
-                  <h3 className="text-xl font-bold text-dark mb-3 group-hover:text-primary transition-colors duration-300">
+                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
                     {project.title}
                   </h3>
-                  
+
                   {/* Description */}
-                  <p className="text-sm text-dark/70 mb-5 line-clamp-3">
+                  <p className="text-sm text-foreground/70 mb-5 line-clamp-3">
                     {project.description}
                   </p>
                   
                   {/* Technologies */}
                   <div className="flex flex-wrap gap-2 mb-5">
                     {project.technologies.map((tech) => (
-                      <span 
+                      <span
                         key={tech}
-                        className="px-2.5 py-1 text-xs font-medium bg-neutral-light rounded-full text-dark/70"
+                        className="px-2.5 py-1 text-xs font-medium bg-muted rounded-full text-foreground/70"
                       >
                         {tech}
                       </span>
@@ -176,7 +181,7 @@ const Projects = () => {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 text-sm text-dark/60 hover:text-primary transition-colors"
+                        className="flex items-center gap-1.5 text-sm text-foreground/60 hover:text-primary transition-colors"
                       >
                         <Github className="w-4 h-4" />
                         <span>Code</span>
@@ -187,7 +192,7 @@ const Projects = () => {
                         href={project.demoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 text-sm text-dark/60 hover:text-primary transition-colors"
+                        className="flex items-center gap-1.5 text-sm text-foreground/60 hover:text-primary transition-colors"
                       >
                         <ExternalLink className="w-4 h-4" />
                         <span>Demo</span>
