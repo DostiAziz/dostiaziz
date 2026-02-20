@@ -1,0 +1,15 @@
+{
+  "name": "Dosti Aziz - ML/AI Engineer Portfolio",
+  "short_name": "Dosti Aziz",
+  "start_url": "/dostiaziz/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3898ec",
+  "icons": [
+    {
+      "src": "/dostiaziz/profile.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
